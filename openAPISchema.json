@@ -1,0 +1,54 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Coderpush data - retrieving employee data",
+        "version": "1.0.0",
+        "description": "API for retrieving employee data"
+    },
+    "paths": {
+        "/get-employee-data": {
+            "get": {
+                "summary": "Get employee data including their email, current project, and annual leaves",
+                "description": "Get employee data including their email, current project, and annual leaves",
+                "operationId": "getEmployeeData",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email of the employee",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response containing employee details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {
+                                            "type": "string",
+                                            "description": "email of the employee"
+                                        },
+                                        "numOfAnnualLeaves": {
+                                            "type": "integer",
+                                            "description": "total of remaining annual leaves of the employee"
+                                        },
+                                        "currentProject": {
+                                            "type": "string",
+                                            "description": "the current project of the employee"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
